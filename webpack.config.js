@@ -1,30 +1,22 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
+const base = require('./webpack.config.base.js')  //继承base
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js'
-  },
+  ...base,  //把base所有的属性都抄过来
   devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-  },
-  plugins: [new HtmlWebpackPlugin(
-    {
-      title: 'test',
-      template: 'src/assets/index.html'
-    }
-  )],
+    devServer: {
+      contentBase: './dist',
+    },
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.css$/i,  //正则表达式
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']    //用JS生成style标签的use
       },
     ],
+
   },
 };
