@@ -15,6 +15,14 @@ module.exports = {
   )],
   module: {
     rules: [
+      {  //file.loader
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
       {  //stylus
         test: /\.styl$/,
         loader: ['style-loader',
