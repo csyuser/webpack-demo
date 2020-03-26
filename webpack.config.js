@@ -12,6 +12,7 @@ module.exports = {
   mode: 'development',
   module: {
     rules: [
+      ...base.module.rules, //先把base里面的rules考进来，再把自己的写进去覆盖
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']    //用JS生成style标签的use

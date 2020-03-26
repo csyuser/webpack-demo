@@ -16,6 +16,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      ...base.module.rules, //先把base里面的rules考进来，再把自己的写进去覆盖
       {
         test: /\.css$/i,
         use: [
